@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+from sympy import acsc
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_rows', 50)
 from scipy import stats
@@ -141,11 +142,19 @@ df_cup.drop(columns = ['home_team_goalkeeper_score',
  'away_team_mean_offense_score',
  'away_team_mean_midfield_score'], inplace = True)
 
+df1.sort_values(by = 'away_team', ascending=True, inplace=True)
 dict = pd.factorize(df1['away_team'])
 dict_cup = pd.factorize(df_cup['away_team'])
 
 df1['away_team_cod'] = dict[0]
 df_cup['away_team_cod'] = dict_cup[0]
+
+df1.sort_values(by = 'home_team', ascending=True, inplace=True)
+dict1 = pd.factorize(df1['home_team'])
+dict_cup1 = pd.factorize(df_cup['home_team'])
+
+df1['home_team_cod'] = dict1[0]
+df_cup['home_team_cod'] = dict_cup1[0]
 
 mask_year = df1['date']  >= '2017' 
 df2 = df1[mask_year]
@@ -226,6 +235,10 @@ print(y_pred_proba)
 df_proba = pd.DataFrame(y_pred_proba,columns=['prob_perder', 'prob_ganhar'])
 teste = df_proba['prob_ganhar']
 print(teste)
-#print(df_cup_recente.shape)
+
 # nao entendi pq nao to conseguindo passar as prob. para o DF completo.. 
 df_cup_recente['prob_ganhar'] = teste
+
+teste.to_excel('teste.xlsx')
+df_cup_recente.to_excel('df_cup_recente.xlsx')
+x_cup.to_excel('x_cup.xlsx')
