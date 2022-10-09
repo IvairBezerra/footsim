@@ -45,7 +45,7 @@ y_cup = df['result']
 
 x_train, x_test, y_train, y_test = train_test_split(x_cup, y_cup, test_size = 0.2, random_state = 2)
 
-x_cup.to_excel('x_cup.xlsx')
+#x_cup.to_excel('x_cup.xlsx')
 #título
 st.title("Simule suas apostas com o FOOTSIM")
 
@@ -128,7 +128,7 @@ df_timesa_ = user_input_variables2.merge(df_timesa, how = 'inner', on = 'away_te
 user_input_variables = pd.concat([df_timesa_, df_timesh_], axis = 1)
 user_input_variables.drop(columns = ['away_team','home_team'], inplace=True)    #   remove the columns  that are already    in place    for
 #print(user_input_variables.head())
-user_input_variables.to_excel('user.xlsx')
+#user_input_variables.to_excel('user.xlsx')
 #search = user_input_variables.merge(x_train)
 
 #grafico
