@@ -187,6 +187,8 @@ x_cup = df_cup_recente.drop(columns = ['shoot_out','home_team','away_team','ndat
 'tournament','city','country','home_team_score','away_team_score','home_team_result','result'])
 y_cup = df_cup_recente['result']
 
+df_cup_recente.to_csv("df_cup.csv")
+
 x_train, x_test, y_train, y_test = train_test_split(x_cup, y_cup, test_size = 0.2, random_state = 2)
 
 #!pip install imblearn
