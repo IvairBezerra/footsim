@@ -175,6 +175,12 @@ prediction = rf.predict_proba(user_input_variables)
 pred = pd.DataFrame(prediction, columns = ['Time da Casa','Visitante'])
 st.subheader('Previsão:')
 
+st.write(user_input_variables)
+
 st.write(pred)
 
 print(pred)
+
+pickle_out = open("classifier.pkl", "wb")
+pickle.dump(rf, pickle_out)
+pickle_out.close()
